@@ -1,17 +1,25 @@
 ---
 interface Props {
-	date: Date;
+  date: Date | string;
 }
 
 const { date } = Astro.props;
+
+let dateObj: Date;
+
+if (date instanceof Date) {
+  dateObj = date;
+} else if (typeof date === 'string') {
+  dateObj = new Date(date);
+} else {
+  dateObj = new Date(); // fallback to now
+}
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-gb', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+<time datetime={dateObj.toISOString()}>
+  {dateObj.toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })}
 </time>
