@@ -1,9 +1,30 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
-import LightGallery from '../components/LightGallery.astro';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
 ---
 
-<Layout title="Gallery 1">
-  <h1 class="text-3xl font-bold mb-6">Gallery 1</h1>
-  <LightGallery />
-</Layout>
+<div id="lightgallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <a href="/images/gallery1.jpg">
+    <img src="/images/thumbs/gallery1.jpg" alt="Gallery 1" />
+  </a>
+</div>
+
+<script client:load>
+  (async () => {
+    const lightGallery = (await import('lightgallery')).default;
+    const lgZoom = (await import('lightgallery/plugins/zoom')).default;
+    const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
+
+    lightGallery(document.getElementById('lightgallery'), {
+      plugins: [lgZoom, lgThumbnail],
+      speed: 500,
+      thumbnail: true,
+      animateThumb: true,
+      showThumbByDefault: true,
+      thumbWidth: 100,
+      thumbHeight: '60px',
+    });
+  })();
+</script>
