@@ -1,19 +1,7 @@
 ---
-import { onMount } from 'astro/jsx-runtime';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
-
-onMount(async () => {
-  const lightGallery = (await import('lightgallery')).default;
-  const lgZoom = (await import('lightgallery/plugins/zoom')).default;
-  const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
-
-  lightGallery(document.getElementById('lightgallery'), {
-    plugins: [lgZoom, lgThumbnail],
-    speed: 500,
-  });
-});
 ---
 
 <div id="lightgallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -27,3 +15,16 @@ onMount(async () => {
     <img src="/images/thumbs/3.jpg" alt="Gallery 3" />
   </a>
 </div>
+
+<script client:load>
+  (async () => {
+    const lightGallery = (await import('lightgallery')).default;
+    const lgZoom = (await import('lightgallery/plugins/zoom')).default;
+    const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
+
+    lightGallery(document.getElementById('lightgallery'), {
+      plugins: [lgZoom, lgThumbnail],
+      speed: 500,
+    });
+  })();
+</script>
