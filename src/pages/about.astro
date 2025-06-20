@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-const publishedDate = new Date().toLocaleDateString('en-GB', {
+const now = new Date();
+const publishedDate = now.toLocaleDateString('en-GB', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
-  });
+});
+const isoDate = now.toISOString();
 ---
 
 <Layout
