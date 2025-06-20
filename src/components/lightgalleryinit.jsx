@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
 
-const LightGalleryInit = () => {
+export default function LightGalleryInit() {
   useEffect(() => {
-    (async () => {
+    async function initLightGallery() {
       const lightGallery = (await import('lightgallery')).default;
       const lgZoom = (await import('lightgallery/plugins/zoom')).default;
       const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
@@ -19,10 +16,9 @@ const LightGalleryInit = () => {
         thumbWidth: 100,
         thumbHeight: '60px',
       });
-    })();
+    }
+    initLightGallery();
   }, []);
 
-  return null; // This component just runs the effect, no visible output
-};
-
-export default LightGalleryInit;
+  return null;
+}
