@@ -1,19 +1,17 @@
-import { useEffect } from 'react';
-import lightGallery from 'lightgallery';
-import lgZoom from 'lightgallery/plugins/zoom';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-
+import React, { useEffect } from 'react';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-zoom.css';
 import 'lightgallery/css/lg-thumbnail.css';
 
-export default function LightGalleryInit() {
+const LightGalleryInit = () => {
   useEffect(() => {
-    const el = document.getElementById('lightgallery');
-    if (el) {
-      lightGallery(el, {
+    (async () => {
+      const lightGallery = (await import('lightgallery')).default;
+      const lgZoom = (await import('lightgallery/plugins/zoom')).default;
+      const lgThumbnail = (await import('lightgallery/plugins/thumbnail')).default;
+
+      lightGallery(document.getElementById('lightgallery'), {
         plugins: [lgZoom, lgThumbnail],
-        selector: '.gallery-item',
         speed: 500,
         thumbnail: true,
         animateThumb: true,
@@ -21,8 +19,10 @@ export default function LightGalleryInit() {
         thumbWidth: 100,
         thumbHeight: '60px',
       });
-    }
+    })();
   }, []);
 
-  return null;
-}
+  return null; // This component just runs the effect, no visible output
+};
+
+export default LightGalleryInit;
