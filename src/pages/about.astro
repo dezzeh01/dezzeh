@@ -1,19 +1,13 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-const now = new Date();
-const publishedDate = now.toLocaleDateString('en-GB', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
-const isoDate = now.toISOString();
+
 ---
 
 <Layout
 	title="About Me"
 	description="Some information goes here"
-	pubDate={publishedDate}
+	pubDate={new Date('June 20 2025')}
 	heroImage={AboutHeroImage}
 >
 <p>
