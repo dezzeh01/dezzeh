@@ -1,23 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from '../layouts/Layout.astro';
+import LightGallery from '../components/LightGallery.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1></h1>
-			<p>
-				This gallery page one to test lightbox
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout title="Gallery 1">
+  <h1 class="text-3xl font-bold mb-6">Gallery 1</h1>
+  <LightGallery />
+</Layout>
