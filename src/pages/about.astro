@@ -1,6 +1,11 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+const publishedDate = new Date().toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+  });
 ---
 
 <Layout
@@ -10,7 +15,7 @@ import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 	heroImage={AboutHeroImage}
 >
 <p>
-I'm a middle aged DevOps engineer who kind of hates his job and is looking to retire.  While I wait for that, I figured I should probably mess arouns with some IT stuff so I don't forget all of it.	
+I'm a middle aged DevOps engineer who kind of hates his job and is looking to retire.  While I wait for that, I figured I should probably mess around with some IT stuff so I don't forget all of it.	
 </p>
 	
 </Layout>
