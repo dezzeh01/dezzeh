@@ -7,7 +7,6 @@ import 'lightgallery/css/lg-thumbnail.css';
 
 <Layout>
   <div id="lightgallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <!-- ✅ Key: Add data-lg-size and class="gallery-item" -->
     <a 
       href="/images/gallery1.jpg"
       class="gallery-item"
@@ -25,7 +24,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 
       lightGallery(document.getElementById('lightgallery'), {
         plugins: [lgZoom, lgThumbnail],
-        selector: '.gallery-item', // ✅ SELECTOR MUST MATCH CLASS
+        selector: '.gallery-item',
         speed: 500,
         thumbnail: true,
         animateThumb: true,
